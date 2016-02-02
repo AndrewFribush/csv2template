@@ -1,0 +1,30 @@
+<p>Choose a csv file. The first row <strong>will</strong> be interpreted as headers.</p>
+<input type="file" accept=".csv" id="file">
+<button ng-click="show()">Show Details of CSV file</button>
+
+<br>
+
+<div ng-show="shower">
+	Keys:
+	<div ng-repeat="k in keys">{{k}}</div>
+</div>
+
+<br>
+<br>
+
+Template: (Use '@@key' to mark it to be replaced by the key.)
+<br>
+<textarea id="template" style="width: 90%; height: 200px;"></textarea>
+
+<p><button ng-click="download()">Process</button></p>
+
+<div ng-repeat="i in out track by $index">
+	{{i}}
+</div>
+
+<div ng-show="shower">
+	<p ng-click="download()">Errors in the CSV File:</p>
+	<div ng-repeat="e in results.errors">
+		In row {{e.row}} there was the error: {{e.message}}
+	</div>
+</div>
